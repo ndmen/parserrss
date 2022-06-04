@@ -8,13 +8,18 @@ export class PostsRepository {
     private postModel: Model<PostDo>,
   ) {}
 
-  async findAll(posts): Promise<any> {
+  async insertAll(posts): Promise<any> {
     const addAllPosts = await this.postModel.insertMany(posts);
   }
 
   async findOne(id): Promise<any> {
     const findPostById = await this.postModel.findById(id);
     return findPostById;
+  }
+
+  async findAll(): Promise<any> {
+    const findAllPosts = await this.postModel.find();
+    return findAllPosts;
   }
 
   async deleteOne(id): Promise<any> {

@@ -3,14 +3,21 @@ import Parser from 'rss-parser';
 import { PostsRepository } from './posts.repository';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class PostsService {
   constructor(private readonly postsRepository: PostsRepository) {}
 
-  async findAll() {
+  @Cron('45 * * * * *')
+  async handleCron() {
+    const addCronTask = await this.parseAll();
+    console.log('Called when the current second is 45');
+  }
+
+  async parseAll() {
     const parser = new Parser();
-    const feed = await parser.parseURL('https://lifehacker.com/rss');
+    const feed = await parser.parseURL(`${process.env.PRPARSEURL}`);
 
     const posts = [];
 
@@ -37,7 +44,7 @@ export class PostsService {
       posts.push(parsedPosts);
     });
 
-    const addPosts = await this.postsRepository.findAll(posts);
+    const addPosts = await this.postsRepository.insertAll(posts);
     return posts;
   }
 
@@ -46,9 +53,10 @@ export class PostsService {
     return createPost;
   }
 
-  // findAll() {
-  //   return `This action returns all posts`;
-  // }
+  async findAll() {
+    const getAllPosts = await this.postsRepository.findAll();
+    return getAllPosts;
+  }
 
   async findOne(id: string) {
     const getPostById = await this.postsRepository.findOne(id);
