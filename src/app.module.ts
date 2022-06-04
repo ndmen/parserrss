@@ -5,7 +5,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ParserModule } from './parser/parser.module';
 
 @Module({
   imports: [
@@ -13,7 +12,6 @@ import { ParserModule } from './parser/parser.module';
     MongooseModule.forRoot(`${process.env.PRMONGODB}`),
     PostsModule,
     ScheduleModule.forRoot(),
-    ParserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

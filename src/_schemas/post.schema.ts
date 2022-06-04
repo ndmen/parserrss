@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type PostDocument = Post & Document;
 
-@Schema()
+@Schema({ versionKey: false, timestamps: true })
 export class Post {
   @Prop()
   title: string;
@@ -13,6 +13,9 @@ export class Post {
 
   @Prop()
   description: string;
+
+  @Prop()
+  guid: string;
 
   @Prop()
   creator: string;
