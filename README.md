@@ -20,6 +20,8 @@ UPDATE /posts/{id}
 
 DELETE /posts/{id}
 
+Where {id} - ObjectId(_id) documents in Mongo DB.
+
 
 Cron Task:
 
