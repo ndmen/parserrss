@@ -50,6 +50,8 @@ $ pnpm run start:dev
 $ pnpm run start:prod
 ```
 
+If you want use Swagger - open link http://localhost:3000/api/#/posts/ after runnning the app.
+
 ## Test
 
 ```bash
