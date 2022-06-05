@@ -39,6 +39,8 @@ $ pnpm install
 
 ## Running the app
 
+Before run add .env file. See .env.example
+
 ```bash
 # development
 $ pnpm run start
