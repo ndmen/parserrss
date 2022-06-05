@@ -24,9 +24,32 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is app parse RSS every 45 seconds.
+
+Routes:
+
+posts
+
+GET /posts
+
+GET /posts/{id}
+
+PATCH /posts/{id}
+
+UPDATE /posts/{id}
+
+DELETE /posts/{id}
+
+
+Cron Task:
+
+Parshe RSS every 45 seconds and add posts to database MongoDB.
 
 ## Installation
+
+```bash
+$ npm install -g pnpm
+```
 
 ```bash
 $ pnpm install
