@@ -10,13 +10,13 @@ Routes:
 
 posts
 
+POST /posts/{id}
+
 GET /posts
 
 GET /posts/{id}
 
 PATCH /posts/{id}
-
-UPDATE /posts/{id}
 
 DELETE /posts/{id}
 
